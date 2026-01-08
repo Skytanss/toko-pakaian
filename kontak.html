@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak Kami - FashionStore</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-form h2 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .contact-info-side {
+            background-color: var(--light-gray);
+            padding: 40px;
+            border-radius: var(--border-radius);
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .info-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .business-hours {
+            margin-top: 40px;
+        }
+        
+        .business-hours h3 {
+            margin-bottom: 15px;
+        }
+        
+        .hour-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .hour-item:last-child {
+            border-bottom: none;
+        }
+        
+        .map-container {
+            margin-top: 60px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+        
+        .contact-success {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Fashion<span>Store</span></a>
+            </div>
+            
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="produk.html">Produk</a></li>
+                    <li><a href="tentang.html">Tentang Kami</a></li>
+                    <li><a href="kontak.html" class="active">Kontak</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-icons">
+                <a href="keranjang.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Kontak Kami</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Beranda</a> / <span>Kontak</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <p>Kami siap membantu Anda dengan segala pertanyaan mengenai produk, pengiriman, atau keluhan lainnya. Jangan ragu untuk menghubungi kami melalui form di bawah ini atau informasi kontak yang tersedia.</p>
+                
+                <div id="contactSuccess" class="contact-success">
+                    <i class="fas fa-check-circle"></i> Pesan Anda telah berhasil dikirim. Kami akan membalas dalam waktu 1x24 jam.
+                </div>
+                
+                <div class="contact-container">
+                    <!-- Contact Form -->
+                    <div class="contact-form">
+                        <h2>Kirim Pesan</h2>
+                        <form id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contactName">Nama Lengkap *</label>
+                                    <input type="text" id="contactName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactEmail">Email *</label>
+                                    <input type="email" id="contactEmail" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactPhone">Nomor Telepon</label>
+                                <input type="tel" id="contactPhone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactSubject">Subjek *</label>
+                                <input type="text" id="contactSubject" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactMessage">Pesan *</label>
+                                <textarea id="contactMessage" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary" style="width: 100%; padding: 15px;">
+                                <i class="fas fa-paper-plane"></i> Kirim Pesan
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Contact Information -->
+                    <div class="contact-info-side">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Alamat Kami</h3>
+                                <p>Jl. Fashion No. 123, Kel. Menteng, Kec. Menteng, Jakarta Pusat 10310</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Telepon</h3>
+                                <p>(021) 1234-5678</p>
+                                <p>WhatsApp: 0812-3456-7890</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Email</h3>
+                                <p>info@fashionstore.com</p>
+                                <p>cs@fashionstore.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="business-hours">
+                            <h3>Jam Operasional</h3>
+                            <div class="hour-item">
+                                <span>Senin - Jumat</span>
+                                <span>08:00 - 20:00</span>
+                            </div>
+                            <div class="hour-item">
+                                <span>Sabtu</span>
+                                <span>09:00 - 18:00</span>
+                            </div>
+                            <div class="hour-item">
+                                <span>Minggu</span>
+                                <span>10:00 - 16:00</span>
+                            </div>
+                            <div class="hour-item">
+                                <span>Hari Libur</span>
+                                <span>10:00 - 15:00</span>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links" style="margin-top: 30px;">
+                            <h3>Ikuti Kami</h3>
+                            <div style="display: flex; gap: 15px; margin-top: 15px;">
+                                <a href="#" class="btn-social" style="background-color: #1877f2;"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="btn-social" style="background-color: #e4405f;"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="btn-social" style="background-color: #1da1f2;"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="btn-social" style="background-color: #ff0000;"><i class="fab fa-youtube"></i></a>
+                                <a href="#" class="btn-social" style="background-color: #000000;"><i class="fab fa-tiktok"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Map -->
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613506864!3d-6.194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b45e67356080477!2sJakarta%2C%20Daerah%20Khusus%20Ibukota%20Jakarta!5e0!3m2!1sid!2sid!4v1638171876632!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                
+                <!-- FAQ Section -->
+                <div class="faq-section" style="margin-top: 60px;">
+                    <h2 style="text-align: center; margin-bottom: 40px;">Pertanyaan yang Sering Diajukan</h2>
+                    <div class="faq-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                        <div class="faq-item" style="background-color: white; padding: 20px; border-radius: var(--border-radius); box-shadow: var(--shadow);">
+                            <h4 style="margin-bottom: 10px;">Bagaimana cara memesan produk?</h4>
+                            <p style="color: var(--gray-color);">Pilih produk yang Anda inginkan, tambahkan ke keranjang, lalu lakukan checkout dan pembayaran.</p>
+                        </div>
+                        <div class="faq-item" style="background-color: white; padding: 20px; border-radius: var(--border-radius); box-shadow: var(--shadow);">
+                            <h4 style="margin-bottom: 10px;">Berapa lama pengiriman?</h4>
+                            <p style="color: var(--gray-color);">Pengiriman dalam kota 1-2 hari, luar kota 3-5 hari, dan luar pulau 5-7 hari kerja.</p>
+                        </div>
+                        <div class="faq-item" style="background-color: white; padding: 20px; border-radius: var(--border-radius); box-shadow: var(--shadow);">
+                            <h4 style="margin-bottom: 10px;">Apakah bisa retur produk?</h4>
+                            <p style="color: var(--gray-color);">Bisa, dengan syarat produk dalam kondisi baru, belum dipakai, dan tags masih terpasang.</p>
+                        </div>
+                        <div class="faq-item" style="background-color: white; padding: 20px; border-radius: var(--border-radius); box-shadow: var(--shadow);">
+                            <h4 style="margin-bottom: 10px;">Metode pembayaran apa saja yang tersedia?</h4>
+                            <p style="color: var(--gray-color);">Transfer bank, e-wallet (GoPay, OVO, Dana), kartu kredit, dan COD untuk area tertentu.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>FashionStore</h3>
+                    <p>Toko pakaian online terpercaya dengan koleksi terlengkap dan harga terbaik.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Link Cepat</h3>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="produk.html">Produk</a></li>
+                        <li><a href="tentang.html">Tentang Kami</a></li>
+                        <li><a href="kontak.html">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Kategori</h3>
+                    <ul>
+                        <li><a href="produk.html?kategori=baju">Baju</a></li>
+                        <li><a href="produk.html?kategori=celana">Celana</a></li>
+                        <li><a href="produk.html?kategori=aksesoris">Aksesoris</a></li>
+                        <li><a href="produk.html?kategori=sepatu">Sepatu</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Kontak</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Jl. Fashion No. 123, Jakarta</li>
+                        <li><i class="fas fa-phone"></i> (021) 1234-5678</li>
+                        <li><i class="fas fa-envelope"></i> info@fashionstore.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 FashionStore. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Contact form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            const successMessage = document.getElementById('contactSuccess');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const formData = {
+                        name: document.getElementById('contactName').value,
+                        email: document.getElementById('contactEmail').value,
+                        phone: document.getElementById('contactPhone').value,
+                        subject: document.getElementById('contactSubject').value,
+                        message: document.getElementById('contactMessage').value
+                    };
+                    
+                    // In a real application, you would send this data to a server
+                    // For this example, we'll just show a success message
+                    
+                    // Show success message
+                    successMessage.style.display = 'block';
+                    
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
