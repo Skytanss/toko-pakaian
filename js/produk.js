@@ -34,7 +34,7 @@ const produkData = [
         harga: 299000,
         hargaAsli: 399000,
         kategori: "sepatu",
-        gambar: "assets/images/produk4.jpg"
+        gambar: "images/Sepatu-Sneaker-Unisex-dengan-Formstrip-Vulkanisasi-Court-Classic.avifassets/images/produk4.jpg"
     },
     {
         id: 5,
@@ -300,4 +300,5 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('detailProduk')) {
         loadDetailProduk();
     }
+
 });
