@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Produk - FashionStore</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Fashion<span>Store</span></a>
+            </div>
+            
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="produk.html">Produk</a></li>
+                    <li><a href="tentang.html">Tentang Kami</a></li>
+                    <li><a href="kontak.html">Kontak</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-icons">
+                <a href="keranjang.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Detail Produk</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Beranda</a> / <a href="produk.html">Produk</a> / <span>Detail</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detail Produk -->
+    <section class="detail-produk">
+        <div class="container">
+            <div class="detail-container" id="detailProduk">
+                <!-- Detail produk akan dimuat via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Produk Terkait -->
+    <section class="produk-unggulan" style="padding-top: 0;">
+        <div class="container">
+            <h2 class="section-title">Produk Terkait</h2>
+            <div class="produk-grid" id="produkTerkait">
+                <!-- Produk terkait akan dimuat via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>FashionStore</h3>
+                    <p>Toko pakaian online terpercaya dengan koleksi terlengkap dan harga terbaik.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Link Cepat</h3>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="produk.html">Produk</a></li>
+                        <li><a href="tentang.html">Tentang Kami</a></li>
+                        <li><a href="kontak.html">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Kategori</h3>
+                    <ul>
+                        <li><a href="produk.html?kategori=baju">Baju</a></li>
+                        <li><a href="produk.html?kategori=celana">Celana</a></li>
+                        <li><a href="produk.html?kategori=aksesoris">Aksesoris</a></li>
+                        <li><a href="produk.html?kategori=sepatu">Sepatu</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Kontak</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Jl. Fashion No. 123, Jakarta</li>
+                        <li><i class="fas fa-phone"></i> (021) 1234-5678</li>
+                        <li><i class="fas fa-envelope"></i> info@fashionstore.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 FashionStore. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/produk.js"></script>
+    <script>
+        // Load related products
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = parseInt(urlParams.get('id'));
+            
+            if (productId) {
+                // Find current product category
+                const produkData = [
+                    // Data produk sama seperti di produk.js
+                ];
+                
+                const currentProduct = produkData.find(p => p.id === productId);
+                if (currentProduct) {
+                    // Get 3 random products from same category (excluding current)
+                    const related = produkData
+                        .filter(p => p.kategori === currentProduct.kategori && p.id !== productId)
+                        .sort(() => 0.5 - Math.random())
+                        .slice(0, 3);
+                    
+                    const container = document.getElementById('produkTerkait');
+                    if (container && related.length > 0) {
+                        container.innerHTML = '';
+                        related.forEach(produk => {
+                            const card = document.createElement('div');
+                            card.className = 'produk-card';
+                            card.innerHTML = `
+                                <div class="produk-img">
+                                    <img src="${produk.gambar}" alt="${produk.nama}">
+                                </div>
+                                <div class="produk-info">
+                                    <h3>${produk.nama}</h3>
+                                    <p class="produk-deskripsi">${produk.deskripsi}</p>
+                                    <div class="produk-harga">
+                                        <div>
+                                            <span class="harga">${formatCurrency(produk.harga)}</span>
+                                            ${produk.hargaAsli ? `<span class="harga-asli">${formatCurrency(produk.hargaAsli)}</span>` : ''}
+                                        </div>
+                                        <div>
+                                            <button class="btn-tambah" onclick="tambahKeKeranjang(${JSON.stringify(produk).replace(/"/g, '&quot;')})">
+                                                <i class="fas fa-cart-plus"></i> Tambah
+                                            </button>
+                                            <a href="detail-produk.html?id=${produk.id}" class="btn-detail" style="margin-left: 10px; color: var(--secondary-color); font-weight: 600;">
+                                                <i class="fas fa-eye"></i> Detail
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                            container.appendChild(card);
+                        });
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
