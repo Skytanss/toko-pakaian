@@ -25,7 +25,7 @@ const produkData = [
         harga: 349000,
         hargaAsli: 450000,
         kategori: "aksesoris",
-        gambar: "assets/images/produk3.jpg"
+        gambar: "https://via.placeholder.com/300x400/ffd166/000000?text=Jam+Tangan"
     },
     {
         id: 4,
@@ -302,3 +302,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 });
+
