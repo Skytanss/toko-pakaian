@@ -1,4 +1,4 @@
-// Product Data
+// File: js/produk.js
 const produkData = [
     {
         id: 1,
@@ -7,7 +7,7 @@ const produkData = [
         harga: 89000,
         hargaAsli: 120000,
         kategori: "baju",
-        gambar: "assets/images/produk1.jpg"
+        gambar: "https://via.placeholder.com/300x400/ff6b6b/ffffff?text=Kaos+Premium"
     },
     {
         id: 2,
@@ -16,7 +16,7 @@ const produkData = [
         harga: 249000,
         hargaAsli: 299000,
         kategori: "celana",
-        gambar: "assets/images/produk2.jpg"
+        gambar: "https://via.placeholder.com/300x400/4ecdc4/ffffff?text=Jeans+Slim+Fit"
     },
     {
         id: 3,
@@ -34,7 +34,7 @@ const produkData = [
         harga: 299000,
         hargaAsli: 399000,
         kategori: "sepatu",
-        gambar: "images/Sepatu-Sneaker-Unisex-dengan-Formstrip-Vulkanisasi-Court-Classic.avifassets/images/produk4.jpg"
+        gambar: "https://via.placeholder.com/300x400/06d6a0/ffffff?text=Sneakers"
     },
     {
         id: 5,
@@ -43,7 +43,7 @@ const produkData = [
         harga: 159000,
         hargaAsli: 199000,
         kategori: "baju",
-        gambar: "assets/images/produk5.jpg"
+        gambar: "https://via.placeholder.com/300x400/ff6b6b/ffffff?text=Kemeja+Flanel"
     },
     {
         id: 6,
@@ -52,7 +52,7 @@ const produkData = [
         harga: 199000,
         hargaAsli: 259000,
         kategori: "celana",
-        gambar: "assets/images/produk6.jpg"
+        gambar: "https://via.placeholder.com/300x400/4ecdc4/ffffff?text=Celana+Chino"
     },
     {
         id: 7,
@@ -61,7 +61,7 @@ const produkData = [
         harga: 279000,
         hargaAsli: 359000,
         kategori: "aksesoris",
-        gambar: "assets/images/produk7.jpg"
+        gambar: "https://via.placeholder.com/300x400/ffd166/000000?text=Tas+Ransel"
     },
     {
         id: 8,
@@ -70,9 +70,18 @@ const produkData = [
         harga: 499000,
         hargaAsli: 699000,
         kategori: "sepatu",
-        gambar: "assets/images/produk8.jpg"
+        gambar: "https://via.placeholder.com/300x400/06d6a0/ffffff?text=Sepatu+Formal"
     }
 ];
+
+// Format currency function
+function formatCurrency(amount) {
+    return new Intl.NumberFormat('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+        minimumFractionDigits: 0
+    }).format(amount);
+}
 
 // Load featured products on homepage
 function loadProdukUnggulan() {
@@ -90,7 +99,7 @@ function loadProdukUnggulan() {
         card.className = 'produk-card';
         card.innerHTML = `
             <div class="produk-img">
-                <img src="${produk.gambar}" alt="${produk.nama}">
+                <img src="${produk.gambar}" alt="${produk.nama}" onerror="this.src='https://via.placeholder.com/300x400/cccccc/666666?text=Gambar+Tidak+Tersedia'">
             </div>
             <div class="produk-info">
                 <h3>${produk.nama}</h3>
@@ -178,7 +187,7 @@ function renderProduk(container, products) {
         card.className = 'produk-card';
         card.innerHTML = `
             <div class="produk-img">
-                <img src="${produk.gambar}" alt="${produk.nama}">
+                <img src="${produk.gambar}" alt="${produk.nama}" onerror="this.src='https://via.placeholder.com/300x400/cccccc/666666?text=Gambar+Tidak+Tersedia'">
             </div>
             <div class="produk-info">
                 <h3>${produk.nama}</h3>
@@ -222,7 +231,7 @@ function loadDetailProduk() {
     
     container.innerHTML = `
         <div class="detail-gambar">
-            <img src="${produk.gambar}" alt="${produk.nama}">
+            <img src="${produk.gambar}" alt="${produk.nama}" onerror="this.src='https://via.placeholder.com/500x600/cccccc/666666?text=Gambar+Tidak+Tersedia'">
         </div>
         <div class="detail-info">
             <h1>${produk.nama}</h1>
@@ -259,25 +268,27 @@ function loadDetailProduk() {
     const kurangBtn = document.getElementById('kurangQty');
     const tambahBtn = document.getElementById('tambahQty');
     
-    kurangBtn.addEventListener('click', () => {
-        let value = parseInt(qtyInput.value);
-        if (value > 1) {
-            qtyInput.value = value - 1;
-        }
-    });
-    
-    tambahBtn.addEventListener('click', () => {
-        let value = parseInt(qtyInput.value);
-        if (value < 10) {
-            qtyInput.value = value + 1;
-        }
-    });
+    if (kurangBtn && tambahBtn && qtyInput) {
+        kurangBtn.addEventListener('click', () => {
+            let value = parseInt(qtyInput.value);
+            if (value > 1) {
+                qtyInput.value = value - 1;
+            }
+        });
+        
+        tambahBtn.addEventListener('click', () => {
+            let value = parseInt(qtyInput.value);
+            if (value < 10) {
+                qtyInput.value = value + 1;
+            }
+        });
+    }
 }
 
 // Add to cart from detail page
 function tambahKeKeranjangDetail(productId) {
     const produk = produkData.find(p => p.id === productId);
-    const qty = parseInt(document.getElementById('qty').value);
+    const qty = parseInt(document.getElementById('qty').value) || 1;
     
     if (produk) {
         tambahKeKeranjang({
@@ -300,6 +311,4 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('detailProduk')) {
         loadDetailProduk();
     }
-
 });
-
