@@ -34,7 +34,7 @@ const produkData = [
         harga: 299000,
         hargaAsli: 399000,
         kategori: "sepatu",
-        gambar: "gambar1.png"
+        gambar: "images/gambar1.png"
     },
     {
         id: 5,
@@ -312,4 +312,5 @@ document.addEventListener('DOMContentLoaded', function() {
         loadDetailProduk();
     }
 });
+
 
