@@ -61,7 +61,7 @@ const produkData = [
         harga: 279000,
         hargaAsli: 359000,
         kategori: "aksesoris",
-        gambar: "https://via.placeholder.com/300x400/ffd166/000000?text=Tas+Ransel"
+        gambar: "images/shirt9.jpg"
     },
     {
         id: 8,
@@ -70,7 +70,7 @@ const produkData = [
         harga: 499000,
         hargaAsli: 699000,
         kategori: "sepatu",
-        gambar: "https://via.placeholder.com/300x400/06d6a0/ffffff?text=Sepatu+Formal"
+        gambar: "images/shirt10.jpg"
     }
 ];
 
@@ -312,6 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
         loadDetailProduk();
     }
 });
+
 
 
 
