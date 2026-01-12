@@ -7,7 +7,7 @@ const produkData = [
         harga: 89000,
         hargaAsli: 120000,
         kategori: "baju",
-        gambar: "https://via.placeholder.com/300x400/ff6b6b/ffffff?text=Kaos+Premium"
+        gambar: "images/shirt1.jpg"
     },
     {
         id: 2,
@@ -16,7 +16,7 @@ const produkData = [
         harga: 249000,
         hargaAsli: 299000,
         kategori: "celana",
-        gambar: "https://via.placeholder.com/300x400/4ecdc4/ffffff?text=Jeans+Slim+Fit"
+        gambar: "images/shirt2. jog.jpeg"
     },
     {
         id: 3,
@@ -25,7 +25,7 @@ const produkData = [
         harga: 349000,
         hargaAsli: 450000,
         kategori: "aksesoris",
-        gambar: "https://via.placeholder.com/300x400/ffd166/000000?text=Jam+Tangan"
+        gambar: "images/shirt3.jpg"
     },
     {
         id: 4,
@@ -43,7 +43,7 @@ const produkData = [
         harga: 159000,
         hargaAsli: 199000,
         kategori: "baju",
-        gambar: "https://via.placeholder.com/300x400/ff6b6b/ffffff?text=Kemeja+Flanel"
+        gambar: "images/shirt4.jpg"
     },
     {
         id: 6,
@@ -52,7 +52,7 @@ const produkData = [
         harga: 199000,
         hargaAsli: 259000,
         kategori: "celana",
-        gambar: "https://via.placeholder.com/300x400/4ecdc4/ffffff?text=Celana+Chino"
+        gambar: "images/shirt5.jpg"
     },
     {
         id: 7,
@@ -312,5 +312,6 @@ document.addEventListener('DOMContentLoaded', function() {
         loadDetailProduk();
     }
 });
+
 
 
