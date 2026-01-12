@@ -34,7 +34,7 @@ const produkData = [
         harga: 299000,
         hargaAsli: 399000,
         kategori: "sepatu",
-        gambar: "https://via.placeholder.com/300x400/06d6a0/ffffff?text=Sneakers"
+        gambar: "gambar1.png"
     },
     {
         id: 5,
@@ -312,3 +312,4 @@ document.addEventListener('DOMContentLoaded', function() {
         loadDetailProduk();
     }
 });
+
